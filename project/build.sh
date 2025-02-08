@@ -364,12 +364,12 @@ function build_select_board() {
 		exit 0
 	fi
 
-	if [ -n $BOARD_CONFIG ]; then
-		rm -f $BOARD_CONFIG
-	fi
-	ln -rfs $TARGET_PRODUCT_DIR/$RK_BUILD_TARGET_BOARD $BOARD_CONFIG
-	#cp $TARGET_PRODUCT_DIR/$RK_BUILD_TARGET_BOARD $BOARD_CONFIG
-	msg_info "switching to board: $(realpath $BOARD_CONFIG)"
+# 	if [ -n $BOARD_CONFIG ]; then
+# 		rm -f $BOARD_CONFIG
+# 	fi
+# 	ln -rfs $TARGET_PRODUCT_DIR/$RK_BUILD_TARGET_BOARD $BOARD_CONFIG
+# 	#cp $TARGET_PRODUCT_DIR/$RK_BUILD_TARGET_BOARD $BOARD_CONFIG
+# 	msg_info "switching to board: $(realpath $BOARD_CONFIG)"
 
 	if [ "$1" = "LUNCH-FORCE" ]; then
 		finish_build
@@ -377,11 +377,11 @@ function build_select_board() {
 	fi
 }
 
-function save_board_config() {
-	if [ -f $TARGET_PRODUCT_DIR/$ ]; then
-		cp $$BOARD_CONFIG $TARGET_PRODUCT_DIR/BoardConfig_IPC/$LF_ORIGIN_BOARD_CONFIG
-	fi
-}
+# function save_board_config() {
+# 	if [ -f $TARGET_PRODUCT_DIR/$ ]; then
+# 		cp $$BOARD_CONFIG $TARGET_PRODUCT_DIR/BoardConfig_IPC/$LF_ORIGIN_BOARD_CONFIG
+# 	fi
+# }
 
 function unset_board_config_all() {
 	local tmp_file=$(mktemp)
@@ -1345,16 +1345,16 @@ function build_clean() {
 		rm -rf ${DTS_CONFIG} ${KERNEL_DEFCONFIG} ${BUILDROOT_DEFCONFIG}
 		rm -rf ${SDK_ROOT_DIR}/output ${SDK_ROOT_DIR}/config
 		rm -rf ${SDK_ROOT_DIR}/sysdrv/source/kernel/out
-		rm -rf ${BOARD_CONFIG}
-		if [ -d ${SDK_SYSDRV_DIR}/source/buildroot ] && [ "$LF_TARGET_ROOTFS" = "buildroot" ]; then
-			rm -rf ${SDK_SYSDRV_DIR}/source/buildroot
-		fi
-		if [ -d ${SDK_SYSDRV_DIR}/source/busybox ]; then
-			rm -rf ${SDK_SYSDRV_DIR}/source/busybox
-		fi
-		if [ -d ${SDK_SYSDRV_DIR}/source/objs_kernel ]; then
-			rm -rf ${SDK_SYSDRV_DIR}/source/objs_kernel
-		fi
+# 		rm -rf ${BOARD_CONFIG}
+# 		if [ -d ${SDK_SYSDRV_DIR}/source/buildroot ] && [ "$LF_TARGET_ROOTFS" = "buildroot" ]; then
+# 			rm -rf ${SDK_SYSDRV_DIR}/source/buildroot
+# 		fi
+# 		if [ -d ${SDK_SYSDRV_DIR}/source/busybox ]; then
+# 			rm -rf ${SDK_SYSDRV_DIR}/source/busybox
+# 		fi
+# 		if [ -d ${SDK_SYSDRV_DIR}/source/objs_kernel ]; then
+# 			rm -rf ${SDK_SYSDRV_DIR}/source/objs_kernel
+# 		fi
 		;;
 	*)
 		msg_warn "clean [$1] not support, ignore"
@@ -2795,9 +2795,9 @@ function kernel_config() {
 trap 'err_handler' ERR
 cd $PROJECT_TOP_DIR
 unset_board_config_all
-if [ "$1" = "lunch" ]; then
-	build_select_board LUNCH-FORCE
-fi
+# if [ "$1" = "lunch" ]; then
+# 	build_select_board LUNCH-FORCE
+# fi
 
 if [ "$1" = "mcu" ]; then
 	build_mcu $2

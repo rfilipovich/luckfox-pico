@@ -1,0 +1,1 @@
+project/cfg/BoardConfig_IPC/BoardConfig-SPI_NAND-Buildroot-RV1103_Luckfox_Pico_Mini_B-IPC-pressure-sniffer.mk
