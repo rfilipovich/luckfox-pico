@@ -1346,15 +1346,15 @@ function build_clean() {
 		rm -rf ${SDK_ROOT_DIR}/output ${SDK_ROOT_DIR}/config
 		rm -rf ${SDK_ROOT_DIR}/sysdrv/source/kernel/out
 # 		rm -rf ${BOARD_CONFIG}
-# 		if [ -d ${SDK_SYSDRV_DIR}/source/buildroot ] && [ "$LF_TARGET_ROOTFS" = "buildroot" ]; then
-# 			rm -rf ${SDK_SYSDRV_DIR}/source/buildroot
-# 		fi
-# 		if [ -d ${SDK_SYSDRV_DIR}/source/busybox ]; then
-# 			rm -rf ${SDK_SYSDRV_DIR}/source/busybox
-# 		fi
-# 		if [ -d ${SDK_SYSDRV_DIR}/source/objs_kernel ]; then
-# 			rm -rf ${SDK_SYSDRV_DIR}/source/objs_kernel
-# 		fi
+		if [ -d ${SDK_SYSDRV_DIR}/source/buildroot ] && [ "$LF_TARGET_ROOTFS" = "buildroot" ]; then
+			rm -rf ${SDK_SYSDRV_DIR}/source/buildroot
+		fi
+		if [ -d ${SDK_SYSDRV_DIR}/source/busybox ]; then
+			rm -rf ${SDK_SYSDRV_DIR}/source/busybox
+		fi
+		if [ -d ${SDK_SYSDRV_DIR}/source/objs_kernel ]; then
+			rm -rf ${SDK_SYSDRV_DIR}/source/objs_kernel
+		fi
 		;;
 	*)
 		msg_warn "clean [$1] not support, ignore"

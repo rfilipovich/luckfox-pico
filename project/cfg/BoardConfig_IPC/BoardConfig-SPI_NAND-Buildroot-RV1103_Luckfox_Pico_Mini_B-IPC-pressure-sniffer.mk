@@ -3,7 +3,7 @@
 #################################################
 # 	Board Config
 #################################################
-export LF_ORIGIN_BOARD_CONFIG=BoardConfig-SPI_NAND-Buildroot-RV1103_Luckfox_Pico_Mini_B-IPC.mk
+export LF_ORIGIN_BOARD_CONFIG=BoardConfig-SPI_NAND-Buildroot-RV1103_Luckfox_Pico_Mini_B-IPC-pressure-sniffer.mk
 # Target CHIP
 export RK_CHIP=rv1106
 
@@ -62,7 +62,7 @@ export RK_PARTITION_FS_TYPE_CFG=rootfs@IGNORE@ubifs,oem@/oem@ubifs,userdata@/use
 export LF_TARGET_ROOTFS=buildroot
 
 # Buildroot defconfig
-export RK_BUILDROOT_DEFCONFIG=luckfox_pico_defconfig
+export RK_BUILDROOT_DEFCONFIG=luckfox_pico_pressure_sniffer_defconfig
 
 #################################################
 # 	Defconfig
