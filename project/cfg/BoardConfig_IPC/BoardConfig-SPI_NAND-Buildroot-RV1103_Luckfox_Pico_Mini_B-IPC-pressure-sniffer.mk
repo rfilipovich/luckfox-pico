@@ -14,7 +14,7 @@ export RK_APP_TYPE=RKIPC_RV1103
 export RK_BOOTARGS_CMA_SIZE="24M"
 
 # Kernel dts
-export RK_KERNEL_DTS=rv1103g-luckfox-pico-mini.dts
+export RK_KERNEL_DTS=rv1103g-luckfox-pico-pressure-sniffer.dts
 
 #################################################
 #	BOOT_MEDIUM
@@ -81,7 +81,7 @@ export RK_MISC=wipe_all-misc.img
 export RK_UBOOT_DEFCONFIG=luckfox_rv1106_uboot_defconfig
 
 # Kernel defconfig
-export RK_KERNEL_DEFCONFIG=luckfox_rv1106_linux_defconfig
+export RK_KERNEL_DEFCONFIG=luckfox_rv1106_linux_pressure_sniffer_defconfig
 
 # Config sensor IQ files
 # RK_CAMERA_SENSOR_IQFILES format:
