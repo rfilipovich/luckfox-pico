@@ -14,6 +14,22 @@
 	compatible = "rockchip,rv1103g-38x38-ipc-v10", "rockchip,rv1103";
 };
 
+&pinctrl {
+	lcd_pins {
+		lcd_dc:lcd-dc {
+			rockchip,pins = <1 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+
+		lcd_ctrl:lcd-ctrl {
+			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+
+		lcd_rst:lcd-rst {
+			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+		};
+	};
+};
+
 /**********SFC**********/
 &sfc {
 	status = "okay";
@@ -54,9 +70,29 @@
 /**********SPI**********/
 /* SPI0_M0 */
 &spi0 {
-	status = "disabled";
+	status = "okay";
 	spidev@0 {
 		spi-max-frequency = <50000000>;
+		status = "disabled";
+	};
+
+	fbtft@0 {
+		pinctrl-names = "default";
+		pinctrl-0 = <&lcd_dc &lcd_ctrl &lcd_rst>;
+
+		compatible = "sitronix,st7789v";
+		reg = <0>;
+		spi-max-frequency = <20000000>;
+		fps = <30>;
+		buswidth = <8>;
+		debug = <0x7>;
+		width = <240>;
+		height = <320>;
+		led-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>; //ctrl
+		dc-gpios = <&gpio1 RK_PC7 GPIO_ACTIVE_HIGH>;  //DC
+		reset-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_LOW>;//RES
+
+		status = "okay";
 	};
 };
 
