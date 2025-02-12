@@ -28,6 +28,12 @@
 			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
 		};
 	};
+
+	hynitron_cst816s_pins {
+		hynitron_cst816s_int: hynitron-cst816s-int {
+			rockchip,pins = <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_up>;
+		};
+	};
 };
 
 /**********SFC**********/
@@ -99,8 +105,27 @@
 /**********I2C**********/
 /* I2C3_M1 */
 &i2c3 {
-	status = "disabled";
-	clock-frequency = <100000>;
+//	pinctrl-names = "default";
+//	pinctrl-0 = <&i2c3m2_xfer>;
+	status = "okay";
+	clock-frequency = <400000>;
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+	touchscreen@15 {
+		pinctrl-names = "default";
+		pinctrl-0 = <&hynitron_cst816s_int>;
+
+		compatible = "hynitron,cst816s";
+		reg = <0x15>;
+
+		interrupt-parent = <&gpio1>;
+		interrupts = <RK_PD0 IRQ_TYPE_EDGE_RISING>;
+
+		reset-gpios = <&gpio1 RK_PD1 GPIO_ACTIVE_HIGH>;
+
+		status = "okay";
+	};
 };
 
 /**********UART**********/
