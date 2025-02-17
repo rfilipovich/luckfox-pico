@@ -5,13 +5,13 @@
 
 start() {
 	printf "Starting pressure_sniffer: "
-	/oem//pressure_sniffer -platform linuxfb:fb=/dev/fb0 &
+	/oem/pressure_sniffer -platform linuxfb:fb=/dev/fb0 &
 
 	echo "OK"
 }
 stop() {
 	printf "Stopping pressure_sniffer: "
-	killall presssure_sniffer
+	killall /oem/pressure_sniffer
 
 	echo "OK"
 }
