@@ -2579,7 +2579,7 @@ function build_firmware() {
 	fi
 
 	__PACKAGE_ROOTFS
-	__PACKAGE_OEM
+#!	__PACKAGE_OEM
 
 	__BUILD_ENABLE_COREDUMP_SCRIPT
 
