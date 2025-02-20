@@ -89,7 +89,7 @@
 #endif
 
 #define CURSOR_ENABLE 0
-#define SHOW_CENTER 0
+#define SHOW_CENTER 1
 
 /*
  * FIXME: Locking
